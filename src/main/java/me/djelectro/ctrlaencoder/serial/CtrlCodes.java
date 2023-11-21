@@ -2,7 +2,8 @@ package me.djelectro.ctrlaencoder.serial;
 
 public enum CtrlCodes {
 
-    CTRL_A (1);
+    CTRL_A (1),
+    ENTER(13);
 
     private final int asciiCode;
     CtrlCodes(int i) {

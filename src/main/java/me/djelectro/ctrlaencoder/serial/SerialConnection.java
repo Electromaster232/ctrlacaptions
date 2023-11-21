@@ -22,8 +22,9 @@ public class SerialConnection {
     }
 
     public void connect(){
+        comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING | SerialPort.TIMEOUT_WRITE_BLOCKING, 10000, 0);
         comPort.openPort();
-        comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_SEMI_BLOCKING | SerialPort.TIMEOUT_WRITE_BLOCKING, 100, 0);
+        //comPort.flushIOBuffers();
         portOpen = true;
     }
 

@@ -14,9 +14,10 @@ public class CtrlAProtocolCoder {
     public boolean connect(){
         sc.connect();
         try {
-            byte[] bytes = SerialConnection.concat(CtrlCodes.CTRL_A.asByte(), SerialConnection.strictStringToBytes("?", Charset.defaultCharset()));
+            byte[] bytes = SerialConnection.concat(CtrlCodes.CTRL_A.asByte(), SerialConnection.strictStringToBytes("?", Charset.defaultCharset()), CtrlCodes.ENTER.asByte());
             sc.writeBytes(bytes);
-            System.out.println(new String(sc.readBytes(10)));
+            byte[] res = sc.readBytes(51);
+            System.out.println(new String(res));
         } catch (CharacterCodingException e) {
             throw new RuntimeException(e);
         }
