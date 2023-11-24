@@ -7,14 +7,24 @@ import java.nio.CharBuffer;
 import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CodingErrorAction;
-import java.util.Arrays;
 
 public class SerialConnection {
     private SerialPort comPort;
     private boolean portOpen = false;
 
-    public static String getInterfaces(){
-        return Arrays.toString(SerialPort.getCommPorts());
+    public static SerialPort[] getInterfaces(){
+        return SerialPort.getCommPorts();
+    }
+
+    public static String[] getInterfacesString(){
+        SerialPort[] interfaces = getInterfaces();
+        String[] res = new String[interfaces.length];
+        int index = 0;
+        for(SerialPort x : interfaces){
+            res[index] = x.getDescriptivePortName();
+            index++;
+        }
+        return res;
     }
 
     public SerialConnection(String port){
