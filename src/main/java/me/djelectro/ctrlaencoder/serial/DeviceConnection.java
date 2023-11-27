@@ -1,6 +1,6 @@
 package me.djelectro.ctrlaencoder.serial;
 
-public interface SerialConnection {
+public interface DeviceConnection {
 
     String[] getInterfaces();
 

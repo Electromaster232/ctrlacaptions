@@ -5,7 +5,7 @@ import java.nio.charset.Charset;
 
 public class CtrlAProtocolCoder {
 
-    private LocalSerialConnection sc;
+    private DeviceConnection sc;
 
     public CtrlAProtocolCoder(String serialPort){
         sc = new LocalSerialConnection(serialPort);

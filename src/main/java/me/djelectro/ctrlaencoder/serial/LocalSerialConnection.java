@@ -2,13 +2,7 @@ package me.djelectro.ctrlaencoder.serial;
 
 import com.fazecast.jSerialComm.*;
 
-import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.CodingErrorAction;
-
-public class LocalSerialConnection implements SerialConnection {
+public class LocalSerialConnection implements DeviceConnection {
     private SerialPort comPort;
     private boolean portOpen = false;
 
