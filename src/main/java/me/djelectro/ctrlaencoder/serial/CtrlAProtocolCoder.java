@@ -5,10 +5,10 @@ import java.nio.charset.Charset;
 
 public class CtrlAProtocolCoder {
 
-    private SerialConnection sc;
+    private LocalSerialConnection sc;
 
     public CtrlAProtocolCoder(String serialPort){
-        sc = new SerialConnection(serialPort);
+        sc = new LocalSerialConnection(serialPort);
     }
 
     public boolean connect(){

@@ -1,12 +1,7 @@
 package me.djelectro.ctrlaencoder;
 
 import me.djelectro.ctrlaencoder.gui.SerialConnect;
-import me.djelectro.ctrlaencoder.gui.Test;
-import me.djelectro.ctrlaencoder.serial.CtrlAProtocolCoder;
-import me.djelectro.ctrlaencoder.serial.SerialConnection;
-
-import java.io.Serial;
-import java.util.Scanner;
+import me.djelectro.ctrlaencoder.serial.LocalSerialConnection;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +14,7 @@ public class Main {
 //
 //        CtrlAProtocolCoder a = new CtrlAProtocolCoder(user);
 //        a.connect();
-        SerialConnect dialog = new SerialConnect(SerialConnection.getInterfacesString());
+        SerialConnect dialog = new SerialConnect(new LocalSerialConnection());
         dialog.pack();
         dialog.setVisible(true);
         //System.exit(0);

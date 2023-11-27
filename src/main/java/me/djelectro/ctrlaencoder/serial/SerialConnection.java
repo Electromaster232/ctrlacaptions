@@ -1,63 +1,31 @@
 package me.djelectro.ctrlaencoder.serial;
 
-import com.fazecast.jSerialComm.*;
-
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.CharacterCodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.CodingErrorAction;
 
-public class SerialConnection {
-    private SerialPort comPort;
-    private boolean portOpen = false;
+public interface SerialConnection {
 
-    public static SerialPort[] getInterfaces(){
-        return SerialPort.getCommPorts();
-    }
+    String[] getInterfaces();
 
-    public static String[] getInterfacesString(){
-        SerialPort[] interfaces = getInterfaces();
-        String[] res = new String[interfaces.length];
-        int index = 0;
-        for(SerialPort x : interfaces){
-            res[index] = x.getDescriptivePortName();
-            index++;
-        }
-        return res;
-    }
+    void setInterface(String inter);
+    void connect();
 
-    public SerialConnection(String port){
-        this.comPort = SerialPort.getCommPort(port);
-    }
+    byte[] readBytes(int bytesToRead);
+    void writeBytes(byte[] bytes);
 
-    public void connect(){
-        comPort.setComPortTimeouts(SerialPort.TIMEOUT_READ_BLOCKING | SerialPort.TIMEOUT_WRITE_BLOCKING, 10000, 0);
-        comPort.openPort();
-        //comPort.flushIOBuffers();
-        portOpen = true;
-    }
+    int getAvailableBytes();
 
-    public void writeBytes(byte[] bytes){
-        if(!portOpen)
-            throw new RuntimeException("Port is not connected");
-        comPort.writeBytes(bytes, bytes.length);
-    }
-
-    public byte[] readBytes(int bytesToRead){
-        byte[] byteArray = new byte[bytesToRead];
-        comPort.readBytes(byteArray, bytesToRead);
-        return byteArray;
-    }
-
-    public static byte[] strictStringToBytes(String s, Charset charset) throws CharacterCodingException {
+    static byte[] strictStringToBytes(String s, Charset charset) throws CharacterCodingException {
         ByteBuffer x  = charset.newEncoder().onMalformedInput(CodingErrorAction.REPORT).encode(CharBuffer.wrap(s));
         byte[] b = new byte[x.remaining()];
         x.get(b);
         return b;
     }
 
-    public static byte[] concat(byte[]... bytes){
+    static byte[] concat(byte[]... bytes){
         // Total the length of each byte array
         int len = 0;
         for(byte[] x : bytes){
@@ -73,4 +41,6 @@ public class SerialConnection {
         }
         return res;
     }
+
+
 }

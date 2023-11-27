@@ -1,5 +1,7 @@
 package me.djelectro.ctrlaencoder.gui;
 
+import me.djelectro.ctrlaencoder.serial.SerialConnection;
+
 import javax.swing.*;
 
 public class SerialConnect extends JFrame {
@@ -9,11 +11,11 @@ public class SerialConnect extends JFrame {
     private JComboBox comboBox1;
     private JTextField textField1;
 
-    public SerialConnect(String[] serialConnectChoices){
+    public SerialConnect(SerialConnection connInterface){
         //contentPane.setVisible(true);
        setContentPane(contentPane);
        // getRootPane().setVisible(true);
-        for(String item : serialConnectChoices){
+        for(String item : connInterface.getInterfaces()){
             comboBox1.addItem(item);
         }
 
