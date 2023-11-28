@@ -1,17 +1,18 @@
 package me.djelectro.ctrlaencoder.gui;
 
-import me.djelectro.ctrlaencoder.serial.SerialConnection;
+import me.djelectro.ctrlaencoder.serial.DeviceConnection;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SerialConnect extends JFrame {
 
     private JPanel contentPane;
     private JButton connectButton;
     private JComboBox comboBox1;
-    private JTextField textField1;
 
-    public SerialConnect(SerialConnection connInterface){
+    public SerialConnect(DeviceConnection connInterface){
         //contentPane.setVisible(true);
        setContentPane(contentPane);
        // getRootPane().setVisible(true);
@@ -19,5 +20,14 @@ public class SerialConnect extends JFrame {
             comboBox1.addItem(item);
         }
 
+        connectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
     }
+
+
 }

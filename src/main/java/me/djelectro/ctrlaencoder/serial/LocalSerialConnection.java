@@ -6,6 +6,14 @@ public class LocalSerialConnection implements DeviceConnection {
     private SerialPort comPort;
     private boolean portOpen = false;
 
+    public String getDeviceName(){
+        return "Local Serial Connection";
+    }
+
+    public boolean isConnected(){
+        return portOpen;
+    }
+
     public String[] getInterfaces(){
         return getInterfacesString();
     }
