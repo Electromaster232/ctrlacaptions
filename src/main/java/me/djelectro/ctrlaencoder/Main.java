@@ -1,11 +1,5 @@
 package me.djelectro.ctrlaencoder;
 
-import me.djelectro.ctrlaencoder.gui.SerialConnect;
-import me.djelectro.ctrlaencoder.serial.LocalSerialConnection;
-import me.djelectro.ctrlaencoder.tui.MainMenu;
-
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 //        System.out.println("Evertz Ctrl-A Data Protocol Encoder");
@@ -21,7 +15,6 @@ public class Main {
 //        dialog.pack();
 //        dialog.setVisible(true);
         //System.exit(0);
-        new MainMenu();
 
     }
 }
