@@ -1,10 +1,11 @@
 package me.djelectro.ctrlaencoder.serial;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface DeviceConnection {
 
-    public static ArrayList<DeviceConnection> instances = new ArrayList<>();
+    public static HashMap<String, DeviceConnection> instances = new HashMap<>();
 
     String getDeviceName();
 
