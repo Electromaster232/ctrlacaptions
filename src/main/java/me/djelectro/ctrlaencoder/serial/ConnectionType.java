@@ -1,5 +1,5 @@
 package me.djelectro.ctrlaencoder.serial;
 
-public enum ConnectionTypes {
+public enum ConnectionType {
     SERIAL;
 }

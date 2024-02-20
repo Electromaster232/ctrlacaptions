@@ -9,7 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import me.djelectro.ctrlaencoder.serial.DeviceConnection;
+import me.djelectro.ctrlaencoder.serial.LocalSerialConnection;
+import me.djelectro.ctrlaencoder.utils.SaveLoadData;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -42,8 +45,19 @@ public class MainAppWindow {
     @FXML
     private void testButton(ActionEvent event){
         event.consume();
+//        try {
+//            new SerialConnect(primaryStage, DeviceConnection.instances.get(deviceSelect.getValue())).showWindow();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        SaveLoadData.saveProject("test");
+    }
+
+    @FXML
+    private void runCreate(ActionEvent event){
+        event.consume();
         try {
-            new SerialConnect(primaryStage, DeviceConnection.instances.get(deviceSelect.getValue())).showWindow();
+            new NewDevice(primaryStage).showWindow();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

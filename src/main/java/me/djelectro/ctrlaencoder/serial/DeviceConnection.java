@@ -9,6 +9,8 @@ public interface DeviceConnection {
 
     String getDeviceName();
 
+    ConnectionType getConnType();
+
     String[] getInterfaces();
 
     void setInterface(String inter);
